@@ -1,0 +1,26 @@
+    name: Run Python Script
+
+    on:
+      push:
+        branches: main
+      pull_request:
+        branches: main
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+
+        steps:
+        - uses: actions/checkout@v4
+          name: Checkout Repository
+
+        - uses: actions/setup-python@v5
+          name: Set up Python
+          with:
+            python-version: '3.13.9'
+
+        - name: Install Dependencies 
+          run: pip install -r requirements.txt
+
+        - name: Run Python Script
+          run: python preprocessing/automate_Thoriq_Dhiya_A.py
